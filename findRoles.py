@@ -19,7 +19,7 @@ while(playernum < 2 or playernum >= len(reachvals)):
         print("Invalid number of players inputted, please input between 2 and 6")
 chosenTeams = []
 while(len(chosenTeams) == 0):
-    print("Any teams that you want to exclude with? Seperate with Space, type * for none")
+    print("Any teams that you want to exclude? Seperate with Space, type * for none")
     print("Options:")
     t = "[ "
     for key in [key for key in teams]:
