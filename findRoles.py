@@ -8,7 +8,8 @@ teams = {
     "riverfolk" : 5,
     "woodland" : 3,
     "corvid" : 3,
-    "lizard" : 2
+    "lizard" : 2,
+    "vagabond2" : 2
 }
 
 print("How many players are playing?")
@@ -68,6 +69,6 @@ while(not validTeams):
     totalReach = 0
     for team in myTeam:
         totalReach += teams[team]
-    validTeams = totalReach >= reachvals[playernum]
+    validTeams = totalReach >= reachvals[playernum] and not "vagabond2" in myTeam or "vagabond" in myTeam
 
 print(myTeam)
