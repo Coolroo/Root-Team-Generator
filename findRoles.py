@@ -24,7 +24,8 @@ while(len(chosenTeams) == 0):
     print("Options:")
     t = "[ "
     for key in [key for key in teams]:
-        t += key + " "
+        t += key + ", "
+    t = t[0:len(t) - 2]
     t += "]"
     print(t)
     inteams = input()
