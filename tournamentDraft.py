@@ -1,7 +1,6 @@
 from random import randrange
 
-def lowestReach(factions):
-    reach = {
+reach = {
     "marquise" : 10,
     "duchy" : 8,
     "eyrie" : 7,
@@ -14,19 +13,16 @@ def lowestReach(factions):
     "warlord" : 9,
     "keepers" : 8
     }
-    lowestReach = factions[0]
-    for i in range(1, len(factions)):
-        if reach[lowestReach] > reach[factions[i]]:
-            lowestReach = factions[i]
-    return lowestReach
+
+def getReach(faction):
+    return reach[faction]
 
 white = [
     "vagabond",
     "riverfolk",
     "woodland",
     "corvid",
-    "lizard",
-    "vagabond2"
+    "lizard"
 ]
 red = [
     "marquise",
@@ -45,13 +41,18 @@ factions = red + white
 
 for i in range(numFactions):
     faction = factions.pop(randrange(len(factions)))
+    if faction == "vagabond":
+        if "vagabond" in draft:
+            faction = "vagabond2"
+        else:
+            factions.append("vagabond")
     if faction in red:
         redfacs += 1
     draft.append(faction)
 
 locked = redfacs == 1
-lowestReach = lowestReach(draft)
-draft.remove(lowestReach)
+draft.sort(key=getReach, reverse=True)
+lowestReach = draft.pop(len(draft) - 1)
 print("Factions:")
 for i in range(numFactions):
     print(draft[i])
